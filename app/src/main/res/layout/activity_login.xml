@@ -27,4 +27,14 @@
         android:hint="密码"
         android:layout_above="@+id/loginButton"
         android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/text1"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/loginButton"
+        android:layout_alignLeft="@+id/loginButton"
+        android:layout_alignStart="@+id/loginButton"
+        android:gravity="center"
+        android:layout_marginTop="15dp" />
 </RelativeLayout>
