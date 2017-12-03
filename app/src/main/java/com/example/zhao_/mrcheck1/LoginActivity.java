@@ -1,6 +1,7 @@
 package com.example.zhao_.mrcheck1;
 
 import android.app.DownloadManager;
+import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.media.MediaMetadataCompat;
@@ -32,6 +33,7 @@ public class LoginActivity extends AppCompatActivity{
         public void handleMessage(Message msg){
             if(msg.what==0){
                 //跳转页面
+
             }
             if(msg.what==1){
                 String qq="无该用户";
@@ -59,6 +61,13 @@ public class LoginActivity extends AppCompatActivity{
                 name1=editUserName.getText().toString().trim();
                 pwd1=editPassWord.getText().toString().trim();
                 postRequest();
+            }
+        });
+        text1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v){
+                Intent intent=new Intent(LoginActivity.this,RegistActivity.class);
+                startActivity(intent);
             }
         });
     }

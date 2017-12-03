@@ -1,5 +1,6 @@
 package com.example.zhao_.mrcheck1;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.Handler;
@@ -15,7 +16,7 @@ import okhttp3.*;
 import java.io.IOException;
 
 public class RegistActivity extends AppCompatActivity {
-    private Button reg;
+    private Button reg,back;
     private EditText uname,pwd,intro;
     private String name1,pwd1,intro1;
     private TextView text1;
@@ -59,6 +60,7 @@ public class RegistActivity extends AppCompatActivity {
         intro=(EditText)findViewById(R.id.introduction);
         text1=(TextView)findViewById(R.id.response);
         reg=(Button)findViewById(R.id.registButton);
+        back=(Button)findViewById(R.id.back);
 
         reg.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -72,7 +74,15 @@ public class RegistActivity extends AppCompatActivity {
                 postRequest();
             }
         });
+        back.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent=new Intent(RegistActivity.this,LoginActivity.class);
+                startActivity(intent);
+            }
+        });
     }
+
 
     private void postRequest(){
         new Thread(new Runnable() {
