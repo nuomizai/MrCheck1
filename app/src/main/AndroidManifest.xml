@@ -35,6 +35,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+    </activity>
+    <activity
+        android:name=".ReportActivity"
+        android:label="报表">
+
+    </activity>
+
     </application>
 
 </manifest>
