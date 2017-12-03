@@ -22,8 +22,28 @@ public class RegistActivity extends AppCompatActivity {
     private Handler mHandler=new Handler(){
         @Override
         public void handleMessage(Message msg){
+            if(msg.what==0){
+                String qq="注册成功";
+                Log.i("RegistActivity",qq);
+                text1.setText(qq);
+            }
             if(msg.what==1){
-                String qq=(String)msg.obj;
+                String qq="用户名已被占用";
+                Log.i("RegistActivity",qq);
+                text1.setText(qq);
+            }
+            if(msg.what==2){
+                String qq="用户名长度错误";
+                Log.i("RegistActivity",qq);
+                text1.setText(qq);
+            }
+            if(msg.what==3){
+                String qq="密码长度错误";
+                Log.i("RegistActivity",qq);
+                text1.setText(qq);
+            }
+            if(msg.what==4){
+                String qq="失败";
                 Log.i("RegistActivity",qq);
                 text1.setText(qq);
             }
@@ -80,10 +100,32 @@ public class RegistActivity extends AppCompatActivity {
     }
     private void parseJSONWithJSONObject(String jsonData){
         try{
-            JSONArray jsonArray=new JSONArray(jsonData);
-            JSONObject jsonObject=jsonArray.getJSONObject(0);
-            String msg=jsonObject.getString("msg");
+            JSONObject jsonObject=new JSONObject(jsonData);
+            final String msg=jsonObject.getString("Msg");
             Log.d("RegistActivity","msg is"+msg);
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    Message message=new Message();
+                    if(msg.equals("0"))
+                    {
+                        message.what=0;
+                    }
+                    if(msg.equals("1")){
+                        message.what=1;
+                    }
+                    if(msg.equals("2")){
+                        message.what=2;
+                    }
+                    if(msg.equals("3")){
+                        message.what=3;
+                    }
+                    if(msg.equals("4")){
+                        message.what=4;
+                    }
+                    mHandler.sendMessage(message);
+                }
+            }).start();
 
         }catch(Exception e){
             e.printStackTrace();
