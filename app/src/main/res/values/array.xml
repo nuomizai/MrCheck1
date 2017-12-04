@@ -19,6 +19,7 @@
     </string-array>
 
     <string-array name="month">
+<<<<<<< HEAD
         <item>1</item>
         <item>2</item>
         <item>3</item>
@@ -31,6 +32,20 @@
         <item>10</item>
         <item>11</item>
         <item>12</item>
+=======
+        <item>1月</item>
+        <item>2月</item>
+        <item>3月</item>
+        <item>4月</item>
+        <item>5月</item>
+        <item>6月</item>
+        <item>7月</item>
+        <item>8月</item>
+        <item>9月</item>
+        <item>10月</item>
+        <item>11月</item>
+        <item>12月</item>
+>>>>>>> bab19a776ca91b952e57b1eb3deb72a35d2e6e1c
     </string-array>
 
     <string-array name="day">

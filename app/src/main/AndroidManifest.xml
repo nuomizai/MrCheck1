@@ -14,24 +14,40 @@
             android:name=".LoginActivity"
             android:label="登录">
             >
-        </activity>
-        <activity
-            android:name=".SearchActivity"
-            android:label="@string/app_name" />
-        <activity
-            android:name=".MainActivity"
-            android:label="@string/app_name"
-            android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".RegistActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".SearchActivity"
+            android:label="@string/app_name" />
+
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name"
+            android:windowSoftInputMode="adjustPan" />
+
+        <activity android:name=".RegistActivity">
+
+        </activity>
+<<<<<<< HEAD
         <activity android:name=".MyinforActivity" />
         <activity android:name=".GetActivity"></activity>
         <activity android:name=".ReportActivity"></activity>
+=======
+
+        <activity android:name=".ReportActivity">
+
+
+        </activity>
+
+        <activity android:name=".GetActivity">
+
+        </activity>
+>>>>>>> bab19a776ca91b952e57b1eb3deb72a35d2e6e1c
     </application>
 
 </manifest>

@@ -94,7 +94,6 @@ public class ReportActivity extends AppCompatActivity {
             @Override
             public void run() {
                 RequestBody formBody= new FormBody.Builder()
-                        .add("uname",name)
                         .add("Year1",year)
                         .add("Month1",month1)
                         .add("Day1",day1)
@@ -110,7 +109,6 @@ public class ReportActivity extends AppCompatActivity {
                     OkHttpClient client= new OkHttpClient();
                     Response response=client.newCall(request).execute();
                     String responseData=response.body().string();
-                    parseJSONWithJSONObject(responseData);
                 }catch(Exception e){
                     e.printStackTrace();
                 }
