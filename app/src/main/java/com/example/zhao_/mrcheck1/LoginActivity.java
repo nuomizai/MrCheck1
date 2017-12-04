@@ -35,7 +35,11 @@ public class LoginActivity extends AppCompatActivity{
         public void handleMessage(Message msg){
             if(msg.what==0){
                 //跳转页面
-
+                GetActivity data=(GetActivity)getApplication();
+                data.setUsername(name1);
+                data.setPassword(pwd1);
+                Intent intent=new Intent(LoginActivity.this,MainActivity.class);
+                startActivity(intent);
             }
             if(msg.what==1){
                 String qq="无该用户";
