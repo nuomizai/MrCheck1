@@ -28,6 +28,8 @@ public class LoginActivity extends AppCompatActivity{
     private Button LButton;
     private TextView text1;
     private String name1,pwd1;
+
+
     private Handler mHandler=new Handler(){
         @Override
         public void handleMessage(Message msg){
