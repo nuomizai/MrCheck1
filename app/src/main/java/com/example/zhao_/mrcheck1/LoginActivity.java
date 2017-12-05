@@ -28,11 +28,15 @@ public class LoginActivity extends AppCompatActivity{
     private Button LButton;
     private TextView text1;
     private String name1,pwd1;
+
+
     private Handler mHandler=new Handler(){
         @Override
         public void handleMessage(Message msg){
             if(msg.what==0){
                 //跳转页面
+                ((GetActivity)getApplication()).setUsername(name1);
+                ((GetActivity)getApplication()).setPassword(pwd1);
                 Intent intent=new Intent(LoginActivity.this,MainActivity.class);
                 startActivity(intent);
             }
