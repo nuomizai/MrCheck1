@@ -113,6 +113,7 @@ public class RegistActivity extends AppCompatActivity {
             JSONObject jsonObject=new JSONObject(jsonData);
             final String msg=jsonObject.getString("Msg");
             Log.d("RegistActivity","msg is"+msg);
+
             new Thread(new Runnable() {
                 @Override
                 public void run() {
