@@ -1,10 +1,13 @@
 package com.example.zhao_.mrcheck1;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 
 import java.sql.Time;
 import java.util.Calendar;
@@ -18,12 +21,17 @@ import okhttp3.Response;
 
 public class ReportActivity extends AppCompatActivity {
     private Button Btmonth,Btyear,back,Btquery;
+    private Spinner Spyear,Spmonth;
     Calendar c= Calendar.getInstance();
     private String year;
     private String month1;
     private String month2;
     private String day1;
     private String day2;
+    private String name;
+    private ArrayAdapter<String> adapteryear;
+    private ArrayAdapter<String> adaptermonth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -34,7 +42,11 @@ public class ReportActivity extends AppCompatActivity {
         Btyear=(Button)findViewById(R.id.report_form_year);
         Btmonth=(Button)findViewById(R.id.report_form_month);
         Btquery=(Button)findViewById(R.id.report_form_query);
+        Spyear=(Spinner)findViewById(R.id.report_form_history_year);
+        Spmonth=(Spinner)findViewById(R.id.report_form_history_month);
 
+        Spyear.setAdapter(adapteryear);
+        Spmonth.setAdapter(adaptermonth);
 
         back.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -67,9 +79,17 @@ public class ReportActivity extends AppCompatActivity {
                 postRequest();
             }
         });
+
+        Spyear.setOnItemSelectedListener(new Spinner.OnItemSelectedListener(){
+            @Override
+            public void onItemSelected( adapteryear<?> arg0, View arg1, int arg2, long arg3) {
+                year = Activity.this.getResources().getStringArray(R.array.year)[arg2];
+            }
+        });
     }
 
     private void postRequest(){
+        name=((GetActivity)getApplicationContext()).getUsername();
         new Thread(new Runnable() {
             @Override
             public void run() {
