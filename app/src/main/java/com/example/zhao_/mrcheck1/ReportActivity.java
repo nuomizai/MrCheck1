@@ -38,7 +38,7 @@ public class ReportActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.report_form);
 
-        back=(Button)findViewById(R.id.back);
+        /*back=(Button)findViewById(R.id.back);
         Btyear=(Button)findViewById(R.id.report_form_year);
         Btmonth=(Button)findViewById(R.id.report_form_month);
         Btquery=(Button)findViewById(R.id.report_form_query);
@@ -80,12 +80,12 @@ public class ReportActivity extends AppCompatActivity {
             }
         });
 
-        /*Spyear.setOnItemSelectedListener(new Spinner.OnItemSelectedListener(){
+        Spyear.setOnItemSelectedListener(new Spinner.OnItemSelectedListener(){
             @Override
             public void onItemSelected( adapteryear<?> arg0, View arg1, int arg2, long arg3) {
                 year = Activity.this.getResources().getStringArray(R.array.year)[arg2];
             }
-        });*/
+        });
     }
 
     private void postRequest(){
@@ -113,7 +113,7 @@ public class ReportActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
             }
-        }).start();
+        }).start();*/
     }
 
 }

@@ -22,11 +22,7 @@
             android:name=".MainActivity"
             android:label="@string/app_name"
             android:windowSoftInputMode="adjustPan" />
-<<<<<<< HEAD
-        <activity android:name=".RegistActivity"></activity>
-        <activity android:name=".ReportActivity"></activity>
         <activity android:name=".Data"></activity>
-=======
         <activity android:name=".RegistActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -36,7 +32,6 @@
         </activity>
         <activity android:name=".ReportActivity" />
         <activity android:name=".MyinforActivity"></activity>
->>>>>>> 74cb0afe56e16f508215606a0388425edd4e182b
     </application>
 
 </manifest>
