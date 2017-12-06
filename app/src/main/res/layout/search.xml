@@ -26,134 +26,173 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_marginLeft="194dp"
-            android:layout_marginStart="194dp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:weightSum="1"
-            android:layout_below="@+id/searchline">
+            android:orientation="horizontal"
+            android:layout_below="@+id/searchline"
+            android:weightSum="1">
+
+            <TextView
+                android:id="@+id/classname"
+                android:layout_width="193dp"
+                android:layout_height="54dp"
+                android:gravity="center"
+                android:text="类别"
+                android:textSize="20sp"
+                android:layout_weight="0.03" />
 
             <Spinner
                 android:id="@+id/classes"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.27"
+                android:layout_width="174dp"
+                android:layout_height="50dp"
                 android:entries="@array/classes" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_below="@+id/searchline"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="56dp"
+            android:id="@+id/linearLayout">
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:text="起始日期"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_alignTop="@+id/linearLayout"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="43dp"
+            android:id="@+id/linearLayout2">
 
             <EditText
                 android:id="@+id/year1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:ems="10"
-                android:hint="年"
-                android:layout_weight="0.15" />
+                android:hint="年" />
 
             <EditText
                 android:id="@+id/month1"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.10"
+                android:layout_weight="1"
                 android:ems="10"
                 android:hint="月" />
 
             <EditText
                 android:id="@+id/date1"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.10"
+                android:layout_weight="1"
                 android:ems="10"
                 android:hint="日" />
 
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_alignTop="@+id/linearLayout2"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="40dp"
+            android:id="@+id/linearLayout3">
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="截止日期"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_alignTop="@+id/linearLayout3"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="41dp"
+            android:id="@+id/linearLayout4">
+
             <EditText
                 android:id="@+id/year2"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.10"
+                android:layout_weight="1"
                 android:ems="10"
                 android:hint="年" />
 
             <EditText
                 android:id="@+id/month2"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.10"
+                android:layout_weight="1"
                 android:ems="10"
                 android:hint="月" />
 
             <EditText
                 android:id="@+id/date2"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.10"
+                android:layout_weight="1"
                 android:ems="10"
                 android:hint="日" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginTop="42dp"
+            android:layout_alignTop="@+id/linearLayout4"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:id="@+id/linearLayout5">
 
             <Button
                 android:id="@+id/search_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.10"
+                android:layout_weight="1"
                 android:text="查询" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginRight="186dp"
-            android:layout_marginEnd="186dp"
-            android:weightSum="1"
-            android:layout_below="@+id/searchline">
+            android:orientation="horizontal"
+            android:layout_alignTop="@+id/linearLayout5"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="42dp">
+
 
             <TextView
-                android:id="@+id/classname"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.10"
-                android:gravity="center"
-                android:text="类别"
-                android:textSize="20sp" />
+                android:id="@+id/show"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="查询结果："
 
-            <TextView
-                android:id="@+id/start"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.11"
-                android:gravity="center"
-                android:text="起始日期"
                 android:textSize="20sp" />
-
-            <TextView
-                android:id="@+id/textView20"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.07"
-                android:gravity="center"
-                android:textSize="20sp" />
-
-            <TextView
-                android:id="@+id/textView19"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.09"
-                android:gravity="center"
-                android:textSize="20sp" />
-
-            <TextView
-                android:id="@+id/end"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.16"
-                android:gravity="center"
-                android:text="截止日期"
-                android:textSize="20sp" />
-
         </LinearLayout>
-
 
     </RelativeLayout>
 
