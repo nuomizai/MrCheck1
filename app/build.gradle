@@ -19,11 +19,6 @@ android {
     }
 }
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 57320436d9a1262fbf1608412a86b2bdcbddd482
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
@@ -34,5 +29,6 @@ dependencies {
     compile 'com.squareup.okhttp3:okhttp:3.4.1'
     compile 'com.google.code.gson:gson:2.7'
     compile 'com.android.support:design:26.0.1'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
 
 }

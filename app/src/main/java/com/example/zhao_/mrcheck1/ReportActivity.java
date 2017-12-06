@@ -80,12 +80,12 @@ public class ReportActivity extends AppCompatActivity {
             }
         });
 
-        Spyear.setOnItemSelectedListener(new Spinner.OnItemSelectedListener(){
+        /*Spyear.setOnItemSelectedListener(new Spinner.OnItemSelectedListener(){
             @Override
             public void onItemSelected( adapteryear<?> arg0, View arg1, int arg2, long arg3) {
                 year = Activity.this.getResources().getStringArray(R.array.year)[arg2];
             }
-        });
+        });*/
     }
 
     private void postRequest(){
