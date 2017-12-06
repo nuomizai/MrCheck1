@@ -30,7 +30,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ReportActivity" />
+        <activity android:name=".ReportActivity"></activity>
         <activity android:name=".MyinforActivity"></activity>
     </application>
 
