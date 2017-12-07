@@ -43,7 +43,8 @@
             android:text="年份"
             android:textSize="18sp"
             android:layout_weight="1"
-            android:textStyle="bold">
+            android:textStyle="bold"
+            android:layout_width="wrap_content">
         </TextView>
 
         <TextView
@@ -100,4 +101,10 @@
         android:layout_marginRight = "5sp"
         >
     </TextView>
+
+    <TextView
+        android:id="@+id/report_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        ></TextView>
 </LinearLayout>
