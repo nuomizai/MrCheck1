@@ -143,12 +143,12 @@
             </Button>
             <!--   返回按钮   -->
             <Button
-                android:id="@+id/accountBack"
-                android:layout_width="60sp"
+                android:id="@+id/recent"
+                android:layout_width="80sp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10sp"
                 android:layout_marginRight="5sp"
-                android:text="取消"></Button>
+                android:text="最近消费"></Button>
 
         </LinearLayout>
     </LinearLayout>

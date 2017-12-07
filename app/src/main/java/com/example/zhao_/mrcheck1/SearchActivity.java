@@ -11,10 +11,16 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.SimpleAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import okhttp3.FormBody;
 import okhttp3.OkHttpClient;
@@ -25,10 +31,24 @@ import okhttp3.Response;
 public class SearchActivity extends AppCompatActivity {
     private Button sch;
     private Spinner cls;
-    private TextView text1;
-    //private ListView list1;
+    //private TextView text1;
+    private ListView list1;
     private EditText syear,smonth,sdate,dyear,dmonth,ddate;
     private String cls1,year1,month1,date1,year2,month2,date2;
+    private SimpleAdapter simplead;
+    private final List<Map<String, Object>> listems = new ArrayList<Map<String, Object>>();
+
+    private Handler lHandler=new Handler(){
+        @Override
+        public void handleMessage(Message msg){
+            if(msg.what==0){
+                //String qq="更新成功";
+                //Log.i("RegistActivity",qq);
+                simplead.notifyDataSetChanged();
+                //text1.setText(qq);
+            }
+        }
+    };
     //private String uname=((GetActivity)getApplicationContext()).getUsername();
 //    private Handler mHandler=new Handler(){
 //        @Override
@@ -40,14 +60,14 @@ public class SearchActivity extends AppCompatActivity {
 //        }
 //    };
 
-    private Handler mHandler=new Handler(){
-        @Override
-        public void handleMessage(Message msg){
-            String get = text1.getText().toString().trim();
-            String get2=(String)msg.obj;
-            text1.setText(get+"\n"+"\n"+get2);
-        }
-    };
+//    private Handler mHandler=new Handler(){
+//        @Override
+//        public void handleMessage(Message msg){
+//            String get = text1.getText().toString().trim();
+//            String get2=(String)msg.obj;
+//            text1.setText(get+"\n"+"\n"+get2);
+//        }
+//    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -55,8 +75,13 @@ public class SearchActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.search);
 
-        //list1=(ListView)findViewById(R.id.search_list);
-        text1=(TextView)findViewById(R.id.show);
+        simplead = new SimpleAdapter(this, listems,
+                R.layout.list_item, new String[]{"mymoney", "mytype", "myps","mytime"},
+                new int[]{R.id.mymoney, R.id.mytype, R.id.myps, R.id.mytime});
+
+        list1=(ListView)findViewById(R.id.search_list);
+        list1.setAdapter(simplead);
+        //text1=(TextView)findViewById(R.id.show);
         sch=(Button)findViewById(R.id.search_button);
         cls=(Spinner) findViewById(R.id.classes);
         syear=(EditText)findViewById(R.id.year1);
@@ -107,7 +132,7 @@ public class SearchActivity extends AppCompatActivity {
                 Log.d("SearchActivity", "endyear" + year2);
                 Log.d("SearchActivity", "endmonth" + month2);
                 Log.d("SearchActivity", "enddate" + date2);
-                text1.setText("查询结果：");
+                //text1.setText("查询结果：");
                 postRequest();
             }
         });
@@ -158,36 +183,44 @@ public class SearchActivity extends AppCompatActivity {
                 String data=jsonObject.getString(s);
                 Log.d("SearchActivity",data);
                 JSONObject jsonObject1=new JSONObject(data);
-
                 final String Username=jsonObject1.getString("Username");
                 Log.d("SearchActivity","Username:"+Username);
-
                 final String Countid=jsonObject1.getString("Countid");
                 Log.d("SearchActivity","Countid:"+Countid);
-
                 final String Type=jsonObject1.getString("Type");
                 Log.d("SearchActivity","Type:"+Type);
-
                 final String Money=jsonObject1.getString("Money");
                 Log.d("SearchActivity","Money:"+Money);
-
                 final String Remark=jsonObject1.getString("Remark");
                 Log.d("SearchActivity","Remark:"+Remark);
-
                 final String Date=jsonObject1.getString("Date");
                 Log.d("SearchActivity","Date:"+Date);
-
-
+//                new Thread(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        Message message=new Message();
+//                        message.obj="用户名:"+Username+" "+"编号:"+Countid+" "+"类型:"+Type+"\n"+"金额:"+Money+" "+"备注:"+Remark+" "+"日期:"+Date;
+//                        mHandler.sendMessage(message);
+//                    }
+//                }).start();
+                Map<String, Object> listem = new HashMap<String, Object>();
+                listem.put("mymoney",Money);
+                listem.put("mytype", Type);
+                listem.put("myps", Remark);
+                listem.put("mytime", Date);
+                listem.put("myid", Username);
+                listems.add(listem);
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
                         Message message=new Message();
-                        message.obj="用户名:"+Username+" "+"编号:"+Countid+" "+"类型:"+Type+"\n"+"金额:"+Money+" "+"备注:"+Remark+" "+"日期:"+Date;
-                        mHandler.sendMessage(message);
+                        if(true)
+                        {
+                            message.what=0;
+                        }
+                        lHandler.sendMessage(message);
                     }
                 }).start();
-                //String get = text1.getText().toString().trim();
-                //text1.setText(get+"\n"+"Username:"+Username+"\n"+"Countid:"+Countid+"\n"+"Type:"+Type+"\n"+"Money:"+Money+"\n"+"Remark:"+Remark+"\n"+"Date:"+Date);
             }
         }catch(Exception e){
             e.printStackTrace();
