@@ -1,18 +1,20 @@
 package com.example.zhao_.mrcheck1;
 
-import android.app.DownloadManager;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v4.media.MediaMetadataCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutCompat;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.CheckBox;
 
 import org.json.JSONObject;
 
@@ -22,12 +24,13 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-public class LoginActivity extends AppCompatActivity{
+public class LoginActivity extends Activity{
     private EditText editUserName;
     private EditText editPassWord;
     private Button LButton;
     private TextView text1;
     private String name1,pwd1;
+    private CheckBox box;
 
 
     private Handler mHandler=new Handler(){
@@ -54,6 +57,7 @@ public class LoginActivity extends AppCompatActivity{
 
         }
     };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,6 +67,18 @@ public class LoginActivity extends AppCompatActivity{
         editUserName=(EditText)findViewById(R.id.edit_username);
         editPassWord=(EditText)findViewById(R.id.edit_password);
         text1=(TextView)findViewById(R.id.text1);
+        box=(CheckBox)findViewById(R.id.checkBox1);
+        box.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean isCheck) {
+                if(isCheck){
+                    editPassWord.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                }
+                else{
+                    editPassWord.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                }
+            }
+        });
         LButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){

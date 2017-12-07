@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -26,6 +27,7 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class ReportActivity extends AppCompatActivity {
+
     private Button Btmonth, Btyear, back, Btquery;
     private Spinner Spyear, Spmonth;
     Calendar c = Calendar.getInstance();
@@ -37,7 +39,6 @@ public class ReportActivity extends AppCompatActivity {
     private String name;
     private TextView reportview;
 
-
     private Handler mHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -46,12 +47,12 @@ public class ReportActivity extends AppCompatActivity {
             reportview.setText(get + "\n" + "\n" + get1);
         }
     };
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.report_form);
+
 
         back = (Button) findViewById(R.id.back);
         Btyear = (Button) findViewById(R.id.report_form_year);
@@ -69,6 +70,7 @@ public class ReportActivity extends AppCompatActivity {
             }
         });
 
+
         Btmonth.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -81,14 +83,15 @@ public class ReportActivity extends AppCompatActivity {
             }
         });
 
+
         Btyear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 year = String.valueOf(c.get(Calendar.YEAR));
                 month1 = "1";
-                month2 = String.valueOf(c.get(Calendar.MONTH));
+                month2 = "12";
                 day1 = "1";
-                day2 = String.valueOf(c.get(Calendar.DAY_OF_MONTH));
+                day2 = "31";
                 postRequest();
             }
         });
@@ -108,6 +111,7 @@ public class ReportActivity extends AppCompatActivity {
 
     private void postRequest() {
         name = Data.username;
+        Log.d("ReportActivity",name);
         new Thread(new Runnable() {
             @Override
             public void run() {

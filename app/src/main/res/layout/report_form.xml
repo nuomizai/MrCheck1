@@ -44,12 +44,13 @@
             android:textSize="18sp"
             android:layout_weight="1"
             android:textStyle="bold"
-            android:layout_width="wrap_content">
+            android:layout_width="0dp">
         </TextView>
 
         <TextView
             android:id="@+id/report_form_title2"
             android:layout_height="40dp"
+            android:layout_width="0dp"
             android:text="月份"
             android:textSize="18sp"
             android:layout_weight="1"
