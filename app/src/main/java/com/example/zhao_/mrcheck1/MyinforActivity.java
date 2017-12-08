@@ -62,7 +62,30 @@ public class MyinforActivity extends AppCompatActivity
         uname.setText(Data.username);
         pwd=(EditText)findViewById(R.id.edit_password);
         pwd.setText(Data.password);
+        //pwd.setKeyListener(null);
+        pwd.setFocusable(false);
+        pwd.setFocusableInTouchMode(false);
+        pwd.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                pwd.setFocusableInTouchMode(true);
+                pwd.setFocusable(true);
+                pwd.requestFocus();
+            }
+        });
+
+
         intro=(EditText)findViewById(R.id.edit_message);
+        intro.setFocusable(false);
+        intro.setFocusableInTouchMode(false);
+        intro.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                intro.setFocusableInTouchMode(true);
+                intro.setFocusable(true);
+                intro.requestFocus();
+            }
+        });
         text1=(TextView)findViewById(R.id.edit_response);
         submmit=(Button)findViewById(R.id.submmitButton);
         back=(Button)findViewById(R.id.back);
