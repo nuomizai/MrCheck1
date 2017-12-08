@@ -15,6 +15,7 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.CheckBox;
+import android.widget.Toast;
 
 import org.json.JSONObject;
 
@@ -47,12 +48,10 @@ public class LoginActivity extends Activity{
 
             }
             if(msg.what==1){
-                String qq="无该用户";
-                text1.setText(qq);
+                Toast.makeText(LoginActivity.this,"无该用户",Toast.LENGTH_SHORT).show();
             }
             if(msg.what==2){
-                String qq="密码错误";
-                text1.setText(qq);
+                Toast.makeText(LoginActivity.this,"密码错误",Toast.LENGTH_SHORT).show();
             }
 
         }
