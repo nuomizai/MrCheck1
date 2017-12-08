@@ -44,7 +44,7 @@ public class ReportActivity extends AppCompatActivity {
         public void handleMessage(Message msg) {
             String get = reportview.getText().toString().trim();
             String get1 = (String) msg.obj;
-            reportview.setText(get + "\n" + "\n" + get1);
+            reportview.setText(get + "\n"+"\n"  + get1);
         }
     };
     @Override
@@ -74,6 +74,7 @@ public class ReportActivity extends AppCompatActivity {
         Btmonth.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                name = Data.username;
                 year = String.valueOf(c.get(Calendar.YEAR));
                 month1 = String.valueOf(c.get(Calendar.MONTH));
                 month2 = month1;
@@ -87,6 +88,7 @@ public class ReportActivity extends AppCompatActivity {
         Btyear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                name = Data.username;
                 year = String.valueOf(c.get(Calendar.YEAR));
                 month1 = "1";
                 month2 = "12";
@@ -99,6 +101,7 @@ public class ReportActivity extends AppCompatActivity {
         Btquery.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                name = Data.username;
                 year = (String) Spyear.getSelectedItem();
                 month1 = (String) Spmonth.getSelectedItem();
                 month2 = month1;
@@ -110,8 +113,6 @@ public class ReportActivity extends AppCompatActivity {
     }
 
     private void postRequest() {
-        name = Data.username;
-        Log.d("ReportActivity",name);
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -164,7 +165,7 @@ public class ReportActivity extends AppCompatActivity {
                 @Override
                 public void run() {
                     Message message = new Message();
-                    message.obj = "food：" + money1 + "(" + point1 + ")";
+                    message.obj = "食品用餐：" + money1 + "(" + point1 + ")";
                     mHandler.sendMessage(message);
                 }
             }).start();
@@ -177,7 +178,7 @@ public class ReportActivity extends AppCompatActivity {
                 @Override
                 public void run() {
                     Message message = new Message();
-                    message.obj = "house-car：" + money2 + "(" + point2 + ")";
+                    message.obj = "住房购车：" + money2 + "(" + point2 + ")";
                     mHandler.sendMessage(message);
                 }
             }).start();
@@ -190,7 +191,7 @@ public class ReportActivity extends AppCompatActivity {
                 @Override
                 public void run() {
                     Message message = new Message();
-                    message.obj = "clothes：" + money3 + "(" + point3 + ")";
+                    message.obj = "饰品衣物：" + money3 + "(" + point3 + ")";
                     mHandler.sendMessage(message);
                 }
             }).start();
@@ -203,7 +204,7 @@ public class ReportActivity extends AppCompatActivity {
                 @Override
                 public void run() {
                     Message message = new Message();
-                    message.obj = "hos-edu：" + money4 + "(" + point4 + ")";
+                    message.obj = "医疗教育：" + money4 + "(" + point4 + ")";
                     mHandler.sendMessage(message);
                 }
             }).start();
@@ -216,7 +217,7 @@ public class ReportActivity extends AppCompatActivity {
                 @Override
                 public void run() {
                     Message message = new Message();
-                    message.obj = "transport：" + money5 + "(" + point5 + ")";
+                    message.obj = "交通出行：" + money5 + "(" + point5 + ")";
                     mHandler.sendMessage(message);
                 }
             }).start();
@@ -229,12 +230,12 @@ public class ReportActivity extends AppCompatActivity {
                 @Override
                 public void run() {
                     Message message = new Message();
-                    message.obj = "3C：" + money6 + "(" + point6 + ")";
+                    message.obj = "数码家电：" + money6 + "(" + point6 + ")";
                     mHandler.sendMessage(message);
                 }
             }).start();
 
-            final String highprice = jsonObject.getString("Highprice");//读取housecar后面为string型
+            final String highprice = jsonObject.getString("highprice");//读取housecar后面为string型
             JSONObject jsonObject7 = new JSONObject(highprice);//转成object型
             final String money7 = jsonObject7.getString("money");//读取其中的money数据
             final String point7 = jsonObject7.getString("point");//读取其中的point数据
@@ -242,7 +243,7 @@ public class ReportActivity extends AppCompatActivity {
                 @Override
                 public void run() {
                     Message message = new Message();
-                    message.obj = "Highprice：" + money7 + "(" + point7 + ")";
+                    message.obj = "大宗商品：" + money7 + "(" + point7 + ")";
                     mHandler.sendMessage(message);
                 }
             }).start();
@@ -255,7 +256,8 @@ public class ReportActivity extends AppCompatActivity {
                 @Override
                 public void run() {
                     Message message = new Message();
-                    message.obj = "money：" + money8 + "(" + point8 + ")";
+                    message.obj = "理财管理：" + money8 + "(" + point8 + ")";
+                    Log.d("ReportApp","理财管理"+money8);
                     mHandler.sendMessage(message);
                 }
             }).start();
