@@ -34,11 +34,14 @@ public class LoginActivity extends AppCompatActivity{
         @Override
         public void handleMessage(Message msg){
             if(msg.what==0){
+                String qq="登陆成功";
+                text1.setText(qq);
                 //跳转页面
-                ((GetActivity)getApplication()).setUsername(name1);
-                ((GetActivity)getApplication()).setPassword(pwd1);
+                Data.username=name1;
+                Data.password=pwd1;
                 Intent intent=new Intent(LoginActivity.this,MainActivity.class);
                 startActivity(intent);
+
             }
             if(msg.what==1){
                 String qq="无该用户";
@@ -112,6 +115,7 @@ public class LoginActivity extends AppCompatActivity{
                     if(msg.equals("0"))
                     {
                         message.what=0;
+
                     }
                     if(msg.equals("1")){
                         message.what=1;
