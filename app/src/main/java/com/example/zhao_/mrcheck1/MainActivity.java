@@ -1,21 +1,26 @@
 package com.example.zhao_.mrcheck1;
 
-<<<<<<< HEAD
-/**
- * Created by 万珂嘉 on 2017/12/3.
- */
-import android.content.DialogInterface;
-import android.os.Message;
-import java.util.Calendar;
-import android.support.v7.app.AppCompatActivity;
-=======
 import android.content.Intent;
->>>>>>> afe56d60f2427e8d8d66008f539c811035389fda
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.view.View;
-<<<<<<< HEAD
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.content.DialogInterface;
+import android.os.Message;
+import java.util.Calendar;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
+import android.view.View;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.AlertDialog;
@@ -38,7 +43,9 @@ import android.widget.SimpleAdapter;
 import org.json.*;
 import okhttp3.*;
 
-public class MainActivity  extends  AppCompatActivity {
+
+public class MainActivity extends AppCompatActivity
+        implements NavigationView.OnNavigationItemSelectedListener {
     private Button add,btn,recent;
     private EditText money,ps;
     private String money1,ps1,spstr;
@@ -60,11 +67,11 @@ public class MainActivity  extends  AppCompatActivity {
         @Override
         public void handleMessage(Message msg){
             if(msg.what==0){
-                String qq="更新成功";
-                Log.i("RegistActivity",qq);
                 simplead.notifyDataSetChanged();
-                text1.setText(qq);
+                text1.setText("刷新成功");
+
             }
+
         }
     };
     private Handler dHandler=new Handler(){
@@ -101,28 +108,25 @@ public class MainActivity  extends  AppCompatActivity {
 
         }
     };
-=======
-import android.support.design.widget.NavigationView;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuItem;
-
-public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
-
->>>>>>> afe56d60f2427e8d8d66008f539c811035389fda
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-<<<<<<< HEAD
-/**
- * 初始化数据
- */
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+
+        /**
+         * 初始化数据
+         */
 
 
         simplead = new SimpleAdapter(this, listems,
@@ -213,19 +217,6 @@ public class MainActivity extends AppCompatActivity
 
         //显示当前时间
         updateDisplay();
-=======
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
-
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
->>>>>>> afe56d60f2427e8d8d66008f539c811035389fda
     }
 
     @Override
@@ -283,7 +274,35 @@ public class MainActivity extends AppCompatActivity
             intent.setClass(this, LoginActivity.class);
             this.startActivity(intent);
 
-<<<<<<< HEAD
+        }
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
+    }
+
+    @Override
+    protected Dialog onCreateDialog(int id) {
+        switch (id) {
+            case DATE_DIALOG_ID:
+                return new DatePickerDialog(this,
+                        mDateSetListener,
+                        mYear, mMonth, mDay);
+        }
+        return null;
+    }
+
+    // updates the date we display in the TextView
+    private void updateDisplay() {
+        dateDisplay.setText(
+                new StringBuilder()
+                        // Month is 0 based so add 1
+                        .append(mMonth + 1).append("-")
+                        .append(mDay).append("-")
+                        .append(mYear).append(" "));
+    }
+
+
     private DatePickerDialog.OnDateSetListener mDateSetListener =
             new DatePickerDialog.OnDateSetListener() {
 
@@ -309,7 +328,7 @@ public class MainActivity extends AppCompatActivity
 //这里File构造方法参数就是从你list读取的文件路径
                 postDelet(ide);
 //通知adapter 更新
-                Log.d("postdelete","0k");
+
                 listems.clear();
                 postAsk();
             }
@@ -332,7 +351,7 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void run() {
                 RequestBody formBody = new FormBody.Builder()
-                        .add("uname", "1")
+                        .add("uname", Data.username)
                         .add("Type", spstr)
                         .add("Money", money1)
                         .add("Remark", ps1)
@@ -362,7 +381,7 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void run() {
                 RequestBody listBody = new FormBody.Builder()
-                        .add("uname", "1")
+                        .add("uname", Data.username)
                         .build();
                 //发起请求
                 final Request request = new Request.Builder()
@@ -382,10 +401,10 @@ public class MainActivity extends AppCompatActivity
             }}).start();}
     private void postDelet(int id)  {
         //建立请求表单，添加上传服务器的参数
-        Map<String, Object> map = listems.get(id);
-        Log.d("delete","0");
-        Object get=map.get("Countid");
-        final  String value = (String) get;    //获取指定的value值
+        Map<String, Object> map = new HashMap<String, Object>();
+        map = listems.get(id);
+        String get=(String) map.get("myid");
+        final  String value = get;    //获取指定的value值
         Log.d("mainactivity","value"+value);
         Log.d("delete","1");
         new Thread(new Runnable() {
@@ -410,8 +429,8 @@ public class MainActivity extends AppCompatActivity
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-            }}).start();}
-
+            }}).start();
+    }
     private void parseJSONWithJSONObject(String jsonData){
         try{
 
@@ -437,15 +456,11 @@ public class MainActivity extends AppCompatActivity
 
         }catch(Exception e){
             e.printStackTrace();
-=======
->>>>>>> afe56d60f2427e8d8d66008f539c811035389fda
         }
     }
-
     private void deleteJSONWithJSONObject(String jsonData){
         try{
 
-<<<<<<< HEAD
             JSONObject jsonObject=new JSONObject(jsonData);
             Log.d("delete","3");
             final String msg=jsonObject.getString("Msg");
@@ -471,7 +486,6 @@ public class MainActivity extends AppCompatActivity
             e.printStackTrace();
         }
     }
-
     private void listJSONWithJSONObject(String jsonData){
 
         try{
@@ -486,7 +500,7 @@ public class MainActivity extends AppCompatActivity
                 String mytype = inObject.getString("Type");
                 String mytime = inObject.getString("Date");
                 String myid = inObject.getString("Countid");
-                Log.d("MainActivity", "mymoney=" + mymoney);
+                Log.d("MainActivity", "myid=" + myid);
                 listem.put("mymoney", mymoney);
                 listem.put("mytype", mytype);
                 listem.put("myps", myps);
@@ -512,11 +526,4 @@ public class MainActivity extends AppCompatActivity
 
     }
 
-
-=======
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
-    }
->>>>>>> afe56d60f2427e8d8d66008f539c811035389fda
 }
