@@ -25,6 +25,7 @@
 
         <activity android:name=".ReportActivity"></activity>
         <activity android:name=".Data"></activity>
+        <activity android:name=".MyinforActivity" />
 
         <activity android:name=".RegistActivity">
             <intent-filter>
