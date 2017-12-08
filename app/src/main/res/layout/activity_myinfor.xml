@@ -21,11 +21,11 @@
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:hint="个性签名"
-        android:layout_above="@+id/loginButton"
+        android:layout_above="@+id/submmitButton"
         android:layout_centerHorizontal="true" />
 
     <Button
-        android:id="@+id/loginButton"
+        android:id="@+id/submmitButton"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
@@ -41,5 +41,16 @@
         android:layout_marginBottom="11dp"
         android:hint="密码"
         android:inputType="textPassword" />
+    <TextView
+        android:id="@+id/edit_response"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_below="@+id/submmitButton"
+        android:layout_alignLeft="@+id/submmitButton"
+        android:layout_alignStart="@+id/submmitButton" />
+    <include layout="@layout/title"
+        android:layout_marginBottom="71dp"
+        android:layout_above="@+id/username" />
 
 </RelativeLayout>
