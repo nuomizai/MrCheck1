@@ -42,9 +42,9 @@ public class ReportActivity extends AppCompatActivity {
     private Handler mHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
-            String get = reportview.getText().toString().trim();
+            //String get = reportview.getText().toString().trim();
             String get1 = (String) msg.obj;
-            reportview.setText(get + "\n"+"\n"  + get1);
+            reportview.setText(get1);
         }
     };
     @Override
@@ -76,7 +76,7 @@ public class ReportActivity extends AppCompatActivity {
             public void onClick(View v) {
                 name = Data.username;
                 year = String.valueOf(c.get(Calendar.YEAR));
-                month1 = String.valueOf(c.get(Calendar.MONTH));
+                month1 = String.valueOf(c.get(Calendar.MONTH)+1);
                 month2 = month1;
                 day1 = "1";
                 day2 = "31";
@@ -147,120 +147,64 @@ public class ReportActivity extends AppCompatActivity {
             JSONObject jsonObject = new JSONObject(jsonData);//读成jsonObject
             final String sum = jsonObject.getString("sum");//读取sum中的内容“5”
             //int num=Integer.parseInt(sum);将sum转成int型
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    Message message = new Message();
-                    message.obj = "总额：" + sum;
-                    String get = (String) message.obj;
-                    reportview.setText(get);
-                }
-            }).start();
 
             final String food = jsonObject.getString("food");//读取housecar后面为string型
             JSONObject jsonObject1 = new JSONObject(food);//转成object型
             final String money1 = jsonObject1.getString("money");//读取其中的money数据
             final String point1 = jsonObject1.getString("point");//读取其中的point数据
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    Message message = new Message();
-                    message.obj = "食品用餐：" + money1 + "(" + point1 + ")";
-                    mHandler.sendMessage(message);
-                }
-            }).start();
 
             final String housecar = jsonObject.getString("house-car");//读取housecar后面为string型
             JSONObject jsonObject2 = new JSONObject(housecar);//转成object型
             final String money2 = jsonObject2.getString("money");//读取其中的money数据
             final String point2 = jsonObject2.getString("point");//读取其中的point数据
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    Message message = new Message();
-                    message.obj = "住房购车：" + money2 + "(" + point2 + ")";
-                    mHandler.sendMessage(message);
-                }
-            }).start();
 
             final String clothes = jsonObject.getString("clothes");//读取housecar后面为string型
             JSONObject jsonObject3 = new JSONObject(clothes);//转成object型
             final String money3 = jsonObject3.getString("money");//读取其中的money数据
             final String point3 = jsonObject3.getString("point");//读取其中的point数据
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    Message message = new Message();
-                    message.obj = "饰品衣物：" + money3 + "(" + point3 + ")";
-                    mHandler.sendMessage(message);
-                }
-            }).start();
 
             final String hosedu = jsonObject.getString("hos-edu");//读取housecar后面为string型
             JSONObject jsonObject4 = new JSONObject(hosedu);//转成object型
             final String money4 = jsonObject4.getString("money");//读取其中的money数据
             final String point4 = jsonObject4.getString("point");//读取其中的point数据
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    Message message = new Message();
-                    message.obj = "医疗教育：" + money4 + "(" + point4 + ")";
-                    mHandler.sendMessage(message);
-                }
-            }).start();
 
             final String transport = jsonObject.getString("transport");//读取housecar后面为string型
             JSONObject jsonObject5 = new JSONObject(transport);//转成object型
             final String money5 = jsonObject5.getString("money");//读取其中的money数据
             final String point5 = jsonObject5.getString("point");//读取其中的point数据
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    Message message = new Message();
-                    message.obj = "交通出行：" + money5 + "(" + point5 + ")";
-                    mHandler.sendMessage(message);
-                }
-            }).start();
 
             final String threeC = jsonObject.getString("3C");//读取housecar后面为string型
             JSONObject jsonObject6 = new JSONObject(threeC);//转成object型
             final String money6 = jsonObject6.getString("money");//读取其中的money数据
             final String point6 = jsonObject6.getString("point");//读取其中的point数据
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    Message message = new Message();
-                    message.obj = "数码家电：" + money6 + "(" + point6 + ")";
-                    mHandler.sendMessage(message);
-                }
-            }).start();
 
             final String highprice = jsonObject.getString("highprice");//读取housecar后面为string型
             JSONObject jsonObject7 = new JSONObject(highprice);//转成object型
             final String money7 = jsonObject7.getString("money");//读取其中的money数据
             final String point7 = jsonObject7.getString("point");//读取其中的point数据
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    Message message = new Message();
-                    message.obj = "大宗商品：" + money7 + "(" + point7 + ")";
-                    mHandler.sendMessage(message);
-                }
-            }).start();
 
             final String moneymanage = jsonObject.getString("money");//读取housecar后面为string型
             JSONObject jsonObject8 = new JSONObject(moneymanage);//转成object型
             final String money8 = jsonObject8.getString("money");//读取其中的money数据
             final String point8 = jsonObject8.getString("point");//读取其中的point数据
+
             new Thread(new Runnable() {
                 @Override
                 public void run() {
                     Message message = new Message();
-                    message.obj = "理财管理：" + money8 + "(" + point8 + ")";
-                    Log.d("ReportApp","理财管理"+money8);
+                    message.obj = "总额：" + sum + "\n" + "\n"
+                    + "食品用餐：" + money1 + "(" + point1 + ")" + "\n" + "\n"
+                    + "住房购车：" + money2 + "(" + point2 + ")" + "\n" + "\n"
+                    + "饰品衣物：" + money3 + "(" + point3 + ")" + "\n" + "\n"
+                    + "医疗教育：" + money4 + "(" + point4 + ")" + "\n" + "\n"
+                    + "交通出行：" + money5 + "(" + point5 + ")" + "\n" + "\n"
+                    + "数码家电：" + money6 + "(" + point6 + ")" + "\n" + "\n"
+                    + "大宗商品：" + money7 + "(" + point7 + ")" + "\n" + "\n"
+                    + "理财管理：" + money8 + "(" + point8 + ")" + "\n" + "\n";
                     mHandler.sendMessage(message);
                 }
             }).start();
+
         } catch (Exception e) {
             e.printStackTrace();
         }
