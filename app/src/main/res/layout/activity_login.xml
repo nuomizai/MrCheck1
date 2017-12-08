@@ -14,19 +14,12 @@
         android:textSize="24sp"
         />
 
-    <Button
-        android:id="@+id/loginButton"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="登录" />
-
     <EditText
         android:id="@+id/edit_username"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:hint="用户名"
-        android:layout_marginBottom="11dp"
+        android:layout_marginBottom="16dp"
         android:layout_above="@+id/edit_password"
         android:layout_centerHorizontal="true" />
 
@@ -35,18 +28,41 @@
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:hint="密码"
-        android:layout_above="@+id/loginButton"
-        android:layout_centerHorizontal="true" />
+        android:inputType="textPassword"
+        android:layout_centerVertical="true"
+        android:layout_alignRight="@+id/edit_username"
+        android:layout_alignEnd="@+id/edit_username" />
+
+    <CheckBox
+        android:id="@+id/checkBox1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="显示密码"
+        android:scaleX="0.6"
+        android:scaleY="0.6"
+        android:layout_below="@+id/edit_password"
+        android:layout_alignRight="@+id/edit_password"
+        android:layout_alignEnd="@+id/edit_password" />
 
     <TextView
         android:id="@+id/text1"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/loginButton"
-        android:layout_alignLeft="@+id/loginButton"
-        android:layout_alignStart="@+id/loginButton"
         android:gravity="center"
         android:text="注册"
         android:textColor="@color/colorMain"
-        android:layout_marginTop="15dp" />
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/checkBox1"
+        android:layout_alignEnd="@+id/checkBox1"
+        android:layout_marginBottom="30dp" />
+
+    <Button
+        android:id="@+id/loginButton"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:text="登录"
+        android:layout_below="@+id/edit_password"
+        android:layout_alignRight="@+id/checkBox1"
+        android:layout_alignEnd="@+id/checkBox1"
+        android:layout_marginTop="46dp" />
 </RelativeLayout>

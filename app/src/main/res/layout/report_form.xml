@@ -12,7 +12,7 @@
         android:id = "@+id/report_form_month"
         android:text = "本月消费报表"
         android:layout_width="match_parent"
-        android:layout_height="58dp"
+        android:layout_height="52dp"
         >
     </Button>
 
@@ -20,14 +20,14 @@
         android:id = "@+id/report_form_year"
         android:text = "本年消费报表"
         android:layout_width="match_parent"
-        android:layout_height="58dp"
+        android:layout_height="52dp"
         >
     </Button>
 
     <TextView
         android:id="@+id/report_form_history1"
         android:layout_width="95dp"
-        android:layout_height="52dp"
+        android:layout_height="40dp"
         android:text="历史报表"
         android:textSize="20sp"
         android:textStyle="bold">
@@ -44,12 +44,13 @@
             android:textSize="18sp"
             android:layout_weight="1"
             android:textStyle="bold"
-            android:layout_width="wrap_content">
+            android:layout_width="0dp">
         </TextView>
 
         <TextView
             android:id="@+id/report_form_title2"
             android:layout_height="40dp"
+            android:layout_width="0dp"
             android:text="月份"
             android:textSize="18sp"
             android:layout_weight="1"
@@ -86,7 +87,7 @@
         android:id = "@+id/report_form_query"
         android:text = "查询"
         android:layout_width="match_parent"
-        android:layout_height="58dp"
+        android:layout_height="52dp"
         >
     </Button>
 
@@ -102,9 +103,13 @@
         >
     </TextView>
 
-    <TextView
-        android:id="@+id/report_view"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        ></TextView>
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/report_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </ScrollView>
+
 </LinearLayout>
