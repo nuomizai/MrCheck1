@@ -1,5 +1,6 @@
 package com.example.zhao_.mrcheck1;
 
+<<<<<<< HEAD
 /**
  * Created by 万珂嘉 on 2017/12/3.
  */
@@ -7,10 +8,14 @@ import android.content.DialogInterface;
 import android.os.Message;
 import java.util.Calendar;
 import android.support.v7.app.AppCompatActivity;
+=======
+import android.content.Intent;
+>>>>>>> afe56d60f2427e8d8d66008f539c811035389fda
 import android.os.Bundle;
-import android.os.Handler;
-import android.util.Log;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.view.View;
+<<<<<<< HEAD
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.AlertDialog;
@@ -96,10 +101,25 @@ public class MainActivity  extends  AppCompatActivity {
 
         }
     };
+=======
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
+
+public class MainActivity extends AppCompatActivity
+        implements NavigationView.OnNavigationItemSelectedListener {
+
+>>>>>>> afe56d60f2427e8d8d66008f539c811035389fda
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+<<<<<<< HEAD
 /**
  * 初始化数据
  */
@@ -193,30 +213,77 @@ public class MainActivity  extends  AppCompatActivity {
 
         //显示当前时间
         updateDisplay();
+=======
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+>>>>>>> afe56d60f2427e8d8d66008f539c811035389fda
     }
 
     @Override
-    protected Dialog onCreateDialog(int id) {
-        switch (id) {
-            case DATE_DIALOG_ID:
-                return new DatePickerDialog(this,
-                        mDateSetListener,
-                        mYear, mMonth, mDay);
+    public void onBackPressed() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
         }
-        return null;
-    }
-
-    // updates the date we display in the TextView
-    private void updateDisplay() {
-        dateDisplay.setText(
-                new StringBuilder()
-                        // Month is 0 based so add 1
-                        .append(mMonth + 1).append("-")
-                        .append(mDay).append("-")
-                        .append(mYear).append(" "));
     }
 
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    @SuppressWarnings("StatementWithEmptyBody")
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+        // Handle navigation view item clicks here.
+        int id = item.getItemId();
+
+        if (id == R.id.nav_checkbook) {
+            Intent intent = new Intent();
+            intent.setClass(this, MainActivity.class);
+            this.startActivity(intent);
+
+            // Handle the camera action
+        } else if (id == R.id.nav_search) {
+            Intent intent = new Intent();
+            intent.setClass(this, SearchActivity.class);
+            this.startActivity(intent);
+
+        } else if (id == R.id.nav_report) {
+            Intent intent = new Intent();
+            intent.setClass(this, ReportActivity.class);
+            this.startActivity(intent);
+
+        } else if (id == R.id.nav_message) {
+            Intent intent = new Intent();
+            intent.setClass(this, MyinforActivity.class);
+            this.startActivity(intent);
+
+        } else if (id == R.id.nav_quit) {
+            Intent intent = new Intent();
+            intent.setClass(this, LoginActivity.class);
+            this.startActivity(intent);
+
+<<<<<<< HEAD
     private DatePickerDialog.OnDateSetListener mDateSetListener =
             new DatePickerDialog.OnDateSetListener() {
 
@@ -370,12 +437,15 @@ public class MainActivity  extends  AppCompatActivity {
 
         }catch(Exception e){
             e.printStackTrace();
+=======
+>>>>>>> afe56d60f2427e8d8d66008f539c811035389fda
         }
     }
 
     private void deleteJSONWithJSONObject(String jsonData){
         try{
 
+<<<<<<< HEAD
             JSONObject jsonObject=new JSONObject(jsonData);
             Log.d("delete","3");
             final String msg=jsonObject.getString("Msg");
@@ -443,4 +513,10 @@ public class MainActivity  extends  AppCompatActivity {
     }
 
 
+=======
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
+    }
+>>>>>>> afe56d60f2427e8d8d66008f539c811035389fda
 }

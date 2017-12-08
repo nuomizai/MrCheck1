@@ -1,72 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<!--大背景
-      @声明xml的命名空间
-      @设置方向=垂直布局
-      @为其建立布局样式 填满父元素
-      @给控件添加一个id 这个新的id会自动生成在 R.java文件里，就能在Activity里面通过这个id来引用对象，控件名index_account
-      @背景图片
-                           -->
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id = "@+id/index_account"
-    android:background = "@mipmap/ic_launcher"
-    >
-    <!--内容板
-         @宽度填满
-         @高度自适应大小，强制性地使视图扩展以便显示其全部子元素内容
-                               -->
-    <!--       添加板                   -->
+    android:fitsSystemWindows="true"
+    tools:openDrawer="start">
 
-    <!-- 条件窗 -->
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <include
+        layout="@layout/app_bar_main"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <!-- 类别文本-->
-        <TextView
-            android:id="@+id/account_classify"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10sp"
-            android:layout_marginRight="5sp"
-            android:text="类别"
-            android:textColor="#000000"
-            android:textStyle="bold"></TextView>
-        <!--    类别选择          -->
-        <Spinner
-            android:id="@+id/classifyspin"
-            android:entries="@array/classes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="5sp"
-            android:drawSelectorOnTop="true"></Spinner>
-        <!--     金额文本     -->
-        <TextView
-            android:id="@+id/account_accounttext"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10sp"
-            android:layout_marginRight="5sp"
-            android:text="金额"
-            android:textColor="#000000"
-            android:textStyle="bold"></TextView>
-        <!-- 填写金额 类型：数字-->
-        <EditText
-            android:id="@+id/editmoney"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="10sp"
-            android:inputType="numberDecimal"
-            android:maxWidth="50sp"
-            android:minWidth="50sp"></EditText>
-    </LinearLayout>
-
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
+<<<<<<< HEAD
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:weightSum="1">
@@ -181,3 +126,17 @@
     </LinearLayout>
     <!--近期记录-->
 </LinearLayout>
+=======
+        android:layout_height="match_parent" />
+
+    <android.support.design.widget.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/nav_header_main"
+        app:menu="@menu/activity_main_drawer" />
+
+</android.support.v4.widget.DrawerLayout>
+>>>>>>> afe56d60f2427e8d8d66008f539c811035389fda
