@@ -33,7 +33,7 @@ public class MyinforActivity extends AppCompatActivity
 
     private TextView uname;
     private EditText pwd;
-    private EditText intro;
+    private TextView intro;
     private String name1,pwd1,intro1;
     private TextView text1;
     private Button submmit,back;
@@ -71,7 +71,7 @@ public class MyinforActivity extends AppCompatActivity
                 pwd.requestFocus();
             }
         });
-        intro=(EditText)findViewById(R.id.edit_message);
+        intro=(TextView)findViewById(R.id.edit_message);
         intro.setFocusable(false);
         intro.setFocusableInTouchMode(false);
         intro.setOnClickListener(new View.OnClickListener(){
