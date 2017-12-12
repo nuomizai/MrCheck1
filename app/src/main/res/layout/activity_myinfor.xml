@@ -94,10 +94,6 @@
         android:layout_marginBottom="44dp"
         android:gravity="center" />
 
-    <include
-        layout="@layout/title"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true" />
+    <include />
 
 </RelativeLayout>

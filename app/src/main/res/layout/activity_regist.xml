@@ -53,7 +53,5 @@
         android:layout_alignLeft="@+id/registButton"
         android:layout_alignStart="@+id/registButton" />
 
-    <include layout="@layout/title"
-        android:layout_marginBottom="71dp"
-        android:layout_above="@+id/username" />
+    <include layout="@layout/title" />
 </RelativeLayout>
