@@ -37,6 +37,7 @@ public class LoginActivity extends Activity{
     private Handler mHandler=new Handler(){
         @Override
         public void handleMessage(Message msg){
+
             if(msg.what==0){
                 String qq="登陆成功";
                 text1.setText(qq);
@@ -45,7 +46,6 @@ public class LoginActivity extends Activity{
                 Data.password=pwd1;
                 Intent intent=new Intent(LoginActivity.this,MainActivity.class);
                 startActivity(intent);
-
             }
             if(msg.what==1){
                 Toast.makeText(LoginActivity.this,"无该用户",Toast.LENGTH_SHORT).show();

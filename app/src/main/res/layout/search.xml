@@ -1,196 +1,170 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
 
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:weightSum="1"
-    android:baselineAligned="false"><![CDATA[/>
+    <include layout="@layout/search_title"
+        android:id="@+id/include"></include>
 
-    ]]>
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="193dp"
+        android:layout_height="54dp"
+        android:layout_weight="0.03"
+        android:gravity="center"
+        android:text="类别"
+        android:textSize="20sp"
+        android:layout_marginRight="19dp"
+        android:layout_marginEnd="19dp"
+        android:layout_marginTop="16dp"
+        android:layout_below="@+id/include"
+        android:layout_toLeftOf="@+id/classes"
+        android:layout_toStartOf="@+id/classes" />
 
-    <RelativeLayout
+    <Spinner
+        android:id="@+id/classes"
+        android:layout_width="174dp"
+        android:layout_height="50dp"
+        android:layout_alignBottom="@+id/textView5"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:entries="@array/classes" />
+
+    <TextView
+        android:id="@+id/textView6"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:text="起始日期"
+        android:textSize="20sp"
+        android:layout_marginTop="13dp"
+        android:layout_below="@+id/textView5"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
-        <TextView
-            android:id="@+id/searchline"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:text="消费记录查询"
-            android:gravity="center"
-            android:textSize="20sp" />
+    <EditText
+        android:id="@+id/year1"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:ems="10"
+        android:hint="年"
+        android:layout_marginLeft="41dp"
+        android:layout_marginStart="41dp"
+        android:layout_marginTop="15dp"
+        android:layout_below="@+id/textView6"
+        android:layout_alignLeft="@+id/textView5"
+        android:layout_alignStart="@+id/textView5" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:layout_below="@+id/searchline"
-            android:weightSum="1">
+    <EditText
+        android:id="@+id/month1"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:ems="10"
+        android:hint="月"
+        android:layout_marginLeft="17dp"
+        android:layout_marginStart="17dp"
+        android:layout_alignBaseline="@+id/year1"
+        android:layout_alignBottom="@+id/year1"
+        android:layout_toRightOf="@+id/year1"
+        android:layout_toEndOf="@+id/year1" />
 
-            <TextView
-                android:id="@+id/classname"
-                android:layout_width="193dp"
-                android:layout_height="54dp"
-                android:gravity="center"
-                android:text="类别"
-                android:textSize="20sp"
-                android:layout_weight="0.03" />
+    <EditText
+        android:id="@+id/date1"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:ems="10"
+        android:hint="日"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_alignBaseline="@+id/month1"
+        android:layout_alignBottom="@+id/month1"
+        android:layout_toRightOf="@+id/month1"
+        android:layout_toEndOf="@+id/month1" />
 
-            <Spinner
-                android:id="@+id/classes"
-                android:layout_width="174dp"
-                android:layout_height="50dp"
-                android:entries="@array/classes" />
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:text="截止日期"
+        android:textSize="20sp"
+        android:layout_marginTop="8dp"
+        android:layout_below="@+id/year1"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
-        </LinearLayout>
+    <EditText
+        android:id="@+id/year2"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/year1"
+        android:layout_alignStart="@+id/year1"
+        android:layout_below="@+id/textView7"
+        android:layout_marginTop="24dp"
+        android:layout_weight="1"
+        android:ems="10"
+        android:hint="年" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:layout_below="@+id/searchline"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="56dp"
-            android:id="@+id/linearLayout">
+    <EditText
+        android:id="@+id/month2"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:ems="10"
+        android:hint="月"
+        android:layout_alignBaseline="@+id/year2"
+        android:layout_alignBottom="@+id/year2"
+        android:layout_alignLeft="@+id/month1"
+        android:layout_alignStart="@+id/month1" />
 
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:gravity="center"
-                android:text="起始日期"
-                android:textSize="20sp" />
-        </LinearLayout>
+    <EditText
+        android:id="@+id/date2"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/year2"
+        android:layout_alignBottom="@+id/year2"
+        android:layout_alignLeft="@+id/date1"
+        android:layout_alignStart="@+id/date1"
+        android:layout_weight="1"
+        android:ems="10"
+        android:hint="日" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:layout_alignTop="@+id/linearLayout"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="43dp"
-            android:id="@+id/linearLayout2">
+    <Button
+        android:id="@+id/search_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="查询"
+        android:layout_marginTop="23dp"
+        android:layout_below="@+id/year2"
+        android:layout_toLeftOf="@+id/date2"
+        android:background="@color/colorMain"
+        android:textColor="@color/white"
+        android:layout_alignLeft="@+id/month2"
+        android:layout_alignStart="@+id/month2" />
 
-            <EditText
-                android:id="@+id/year1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:hint="年" />
+    <ListView
+        android:id="@+id/search_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/textView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="27dp" />
 
-            <EditText
-                android:id="@+id/month1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:hint="月" />
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="结果"
+        android:textSize="20sp"
+        android:layout_below="@+id/search_button"
+        android:layout_alignLeft="@+id/search_button"
+        android:layout_alignStart="@+id/search_button"
+        android:layout_marginTop="14dp"
+        android:layout_alignRight="@+id/search_button"
+        android:layout_alignEnd="@+id/search_button" />
 
-            <EditText
-                android:id="@+id/date1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:hint="日" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:layout_alignTop="@+id/linearLayout2"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="40dp"
-            android:id="@+id/linearLayout3">
-
-            <TextView
-                android:id="@+id/textView4"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="截止日期"
-                android:textSize="20sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:layout_alignTop="@+id/linearLayout3"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="41dp"
-            android:id="@+id/linearLayout4">
-
-            <EditText
-                android:id="@+id/year2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:hint="年" />
-
-            <EditText
-                android:id="@+id/month2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:hint="月" />
-
-            <EditText
-                android:id="@+id/date2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:hint="日" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:layout_marginTop="42dp"
-            android:layout_alignTop="@+id/linearLayout4"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:id="@+id/linearLayout5"
-            android:weightSum="1">
-
-            <Button
-                android:id="@+id/search_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:text="查询" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:layout_alignTop="@+id/linearLayout5"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="42dp">
-
-
-            <ListView
-                android:id="@+id/search_list"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-        </LinearLayout>
-
-    </RelativeLayout>
-
-</LinearLayout>
+</RelativeLayout>

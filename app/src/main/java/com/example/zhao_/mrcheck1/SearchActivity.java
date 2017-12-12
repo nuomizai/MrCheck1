@@ -1,5 +1,6 @@
 package com.example.zhao_.mrcheck1;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -7,13 +8,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.SimpleAdapter;
 import android.widget.Spinner;
-import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONObject;
 
@@ -29,12 +30,13 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class SearchActivity extends AppCompatActivity {
-    private Button sch;
+    private Button sch,back;
     private Spinner cls;
-    //private TextView text1;
+    private TextView text1;
     private ListView list1;
     private EditText syear,smonth,sdate,dyear,dmonth,ddate;
     private String cls1,year1,month1,date1,year2,month2,date2;
+    private String uname;
     private SimpleAdapter simplead;
     private final List<Map<String, Object>> listems = new ArrayList<Map<String, Object>>();
 
@@ -79,9 +81,11 @@ public class SearchActivity extends AppCompatActivity {
                 R.layout.list_item, new String[]{"mymoney", "mytype", "myps","mytime"},
                 new int[]{R.id.mymoney, R.id.mytype, R.id.myps, R.id.mytime});
 
+
+        back = (Button) findViewById(R.id.back);
         list1=(ListView)findViewById(R.id.search_list);
         list1.setAdapter(simplead);
-        //text1=(TextView)findViewById(R.id.show);
+        text1=(TextView)findViewById(R.id.textView);
         sch=(Button)findViewById(R.id.search_button);
         cls=(Spinner) findViewById(R.id.classes);
         syear=(EditText)findViewById(R.id.year1);
@@ -92,6 +96,14 @@ public class SearchActivity extends AppCompatActivity {
         ddate=(EditText)findViewById(R.id.date2);
 
 
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SearchActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
         cls.setOnItemSelectedListener(new  AdapterView.OnItemSelectedListener() {
 
             public void onItemSelected(AdapterView<?> parent, View view,
@@ -99,17 +111,17 @@ public class SearchActivity extends AppCompatActivity {
 
                 //拿到被选择项的值
                 cls1 = (String) cls.getSelectedItem();
-                switch (cls1)
-                {
-                    case "食品用餐": cls1="food"; break;
-                    case "住房购车": cls1="house-car"; break;
-                    case "饰品衣物": cls1="clothes"; break;
-                    case "医疗教育": cls1="hos-edu"; break;
-                    case "交通出行": cls1="transport"; break;
-                    case "数码家电": cls1="3C"; break;
-                    case "大宗商品": cls1="highprice"; break;
-                    case "理财管理": cls1="money"; break;
-                }
+//                switch (cls1)
+//                {
+//                    case "食品用餐": cls1="food"; break;
+//                    case "住房购车": cls1="house-car"; break;
+//                    case "饰品衣物": cls1="clothes"; break;
+//                    case "医疗教育": cls1="hos-edu"; break;
+//                    case "交通出行": cls1="transport"; break;
+//                    case "数码家电": cls1="3C"; break;
+//                    case "大宗商品": cls1="highprice"; break;
+//                    case "理财管理": cls1="money"; break;
+//                }
             }
             public void onNothingSelected(AdapterView<?> parent) {
 
@@ -119,6 +131,9 @@ public class SearchActivity extends AppCompatActivity {
         sch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
+                listems.clear();
+                simplead.notifyDataSetChanged();
+                uname=Data.username;
                 year1 = syear.getText().toString().trim();
                 month1 =smonth.getText().toString().trim();
                 date1 = sdate.getText().toString().trim();
@@ -144,7 +159,7 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void run(){
                 RequestBody formBody=new FormBody.Builder()
-                        .add("uname","0001")
+                        .add("uname",uname)
                         .add("Type",cls1)
                         .add("Year1",year1)
                         .add("Month1",month1)
@@ -177,6 +192,10 @@ public class SearchActivity extends AppCompatActivity {
             Log.d("SearchActivity",count);
 
             int num=Integer.parseInt(count);
+            //if (num>0) text1.setText("查找成功");
+            if (num==0) text1.setText("查找失败");
+            //
+            //Toast.makeText(SearchActivity.this,"没有账单",Toast.LENGTH_SHORT).show();
             for (int i=0;i<num;i++)
             {
                 String s=String.valueOf(i);
