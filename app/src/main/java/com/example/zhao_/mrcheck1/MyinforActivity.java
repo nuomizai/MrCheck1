@@ -61,8 +61,6 @@ public class MyinforActivity extends AppCompatActivity
         uname = (TextView)findViewById(R.id.edit_username);
         uname.setText(Data.username);
         pwd=(EditText)findViewById(R.id.edit_password);
-        pwd.setText(Data.password);
-        //pwd.setKeyListener(null);
         pwd.setFocusable(false);
         pwd.setFocusableInTouchMode(false);
         pwd.setOnClickListener(new View.OnClickListener(){
@@ -73,8 +71,6 @@ public class MyinforActivity extends AppCompatActivity
                 pwd.requestFocus();
             }
         });
-
-
         intro=(EditText)findViewById(R.id.edit_message);
         intro.setFocusable(false);
         intro.setFocusableInTouchMode(false);
@@ -86,6 +82,7 @@ public class MyinforActivity extends AppCompatActivity
                 intro.requestFocus();
             }
         });
+
         text1=(TextView)findViewById(R.id.edit_response);
         submmit=(Button)findViewById(R.id.submmitButton);
         back=(Button)findViewById(R.id.back);
@@ -193,9 +190,11 @@ public class MyinforActivity extends AppCompatActivity
     private void parseJSONWithJSONObjectFORINTRO(String jsonData){
         try{
             JSONObject jsonObject=new JSONObject(jsonData);
-
+            String password=jsonObject.getString("Password");
+            Log.d("MyinforActivity",password);
             String introduction=jsonObject.getString("Introduction");
             Log.d("MyinforActivity",introduction);
+            pwd.setText(password);
             intro.setText(introduction);
 
         }catch(Exception e){
