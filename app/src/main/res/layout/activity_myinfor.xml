@@ -93,7 +93,8 @@
         android:layout_alignStart="@+id/text_password"
         android:layout_marginBottom="44dp"
         android:gravity="center" />
+    <include
+        layout="@layout/title"/>
 
-    <include />
 
 </RelativeLayout>

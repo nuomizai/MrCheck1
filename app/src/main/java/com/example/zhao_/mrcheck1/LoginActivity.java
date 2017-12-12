@@ -39,7 +39,7 @@ public class LoginActivity extends Activity{
         public void handleMessage(Message msg){
 
             if(msg.what==0){
-                String qq="登陆成功";
+                String qq="登录成功";
                 text1.setText(qq);
                 //跳转页面
                 Data.username=name1;
