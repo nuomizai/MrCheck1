@@ -172,7 +172,7 @@ public class MainActivity extends AppCompatActivity
                 money.setText("");
                 ps.setText("");
                 nYear=String.valueOf(mYear);
-                nMonth=String.valueOf(mMonth);
+                nMonth=String.valueOf(mMonth+1);
                 nDay=String.valueOf(mDay);
                 Log.d("money",money1);
                 Log.d("ps",ps1);
