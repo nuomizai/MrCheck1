@@ -57,12 +57,12 @@
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_above="@+id/submmitButton"
+        android:hint="自我介绍"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_marginBottom="73dp"
         android:layout_marginEnd="43dp"
-        android:layout_marginRight="43dp"
-        android:hint="个性签名" />
+        android:layout_marginRight="43dp" />
 
     <Button
         android:id="@+id/submmitButton"

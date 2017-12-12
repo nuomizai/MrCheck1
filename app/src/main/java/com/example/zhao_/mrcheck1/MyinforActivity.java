@@ -80,6 +80,7 @@ public class MyinforActivity extends AppCompatActivity
                 intro.setFocusableInTouchMode(true);
                 intro.setFocusable(true);
                 intro.requestFocus();
+                intro.setText("");
             }
         });
 
